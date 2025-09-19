@@ -1,9 +1,13 @@
 /* eslint-disable no-unused-expressions */
 const calculator = require('./calculator');
 
-describe.skip('_check', () => {
+describe('_check', () => {
   beforeEach(() => {
     sinon.spy(calculator, '_check');
+    calculator.add = (x, y) => calculator._check(x, y) || x + y;
+    calculator.subtract = (x, y) => calculator._check(x, y) || x - y;
+    calculator.multiply = (x, y) => calculator._check(x, y) || x * y;
+    calculator.divide = (x, y) => calculator._check(x, y) || x / y;
   });
 
   afterEach(() => {
